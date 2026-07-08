@@ -1,0 +1,71 @@
+[gd_scene format=4 uid="uid://c3ryxnbssrtpu"]
+
+[ext_resource type="Texture2D" uid="uid://druw63my78dlc" path="res://Arte/Tiles/woodfloortile1a.png" id="1_j4kvc"]
+[ext_resource type="Texture2D" uid="uid://ctp72js3vbieh" path="res://Arte/Tiles/woodfloortile1b.png" id="2_bjsl6"]
+[ext_resource type="PackedScene" uid="uid://j11e2oy4vy0m" path="res://Personagens/jogador.tscn" id="2_j5dva"]
+[ext_resource type="Texture2D" uid="uid://bira7nddudi03" path="res://Arte/singleredbed1a.png" id="2_qboq2"]
+[ext_resource type="Texture2D" uid="uid://vc1nuv13thso" path="res://Arte/singleredbed1b.png" id="3_qvmr6"]
+[ext_resource type="Texture2D" uid="uid://c5sc5fq7y5sfh" path="res://Arte/Tiles/woodfloortile1c.png" id="3_yn71n"]
+[ext_resource type="Texture2D" uid="uid://c7kfvkno2pswo" path="res://Arte/Tiles/woodfloortile1d.png" id="4_c6pvx"]
+[ext_resource type="Texture2D" uid="uid://btnuugqcva1v1" path="res://Arte/Tiles/woodfloortile1e.png" id="5_nt6ue"]
+[ext_resource type="Texture2D" uid="uid://crm12yje4e8kh" path="res://Arte/Tiles/woodfloortile1f.png" id="6_ktpro"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j20r2"]
+texture = ExtResource("1_j4kvc")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_afyt6"]
+texture = ExtResource("2_bjsl6")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xypay"]
+texture = ExtResource("3_yn71n")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7bqd8"]
+texture = ExtResource("4_c6pvx")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fr8lr"]
+texture = ExtResource("5_nt6ue")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fsvas"]
+texture = ExtResource("6_ktpro")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_kx78r"]
+sources/1 = SubResource("TileSetAtlasSource_j20r2")
+sources/2 = SubResource("TileSetAtlasSource_afyt6")
+sources/3 = SubResource("TileSetAtlasSource_xypay")
+sources/4 = SubResource("TileSetAtlasSource_7bqd8")
+sources/5 = SubResource("TileSetAtlasSource_fr8lr")
+sources/6 = SubResource("TileSetAtlasSource_fsvas")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tn8co"]
+texture = ExtResource("2_qboq2")
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1ag4k"]
+texture = ExtResource("3_qvmr6")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_j5dva"]
+sources/2 = SubResource("TileSetAtlasSource_tn8co")
+sources/3 = SubResource("TileSetAtlasSource_1ag4k")
+
+[node name="Mundo" type="Node2D" unique_id=55429948]
+position = Vector2(383, 181)
+
+[node name="Chão" type="TileMapLayer" parent="." unique_id=554164816]
+tile_map_data = PackedByteArray("AAD8/wMAAgAAAAAAAAD8/wIAAgAAAAAAAAD8/wEAAwAAAAAAAAD9/wEABAAAAAAAAAD9/wAABgAAAAAAAAD9/wIAAgAAAAAAAAD8/wAAAQAAAAAAAAD9/wMAAgAAAAAAAAD7/wIABQAAAAAAAAD7/wEAAQAAAAAAAAD7/wAAAwAAAAAAAAD8////AQAAAAAAAAD7/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD6/wIABgAAAAAAAAD6/wEABQAAAAAAAAD5/wIAAgAAAAAAAAD5/wEAAQAAAAAAAAD6/wAAAwAAAAAAAAD6////AgAAAAAAAAD7////BQAAAAAAAAD5/wAABAAAAAAAAAD5////BgAAAAAAAAD5/wMAAgAAAAAAAAD5/wQAAgAAAAAAAAD+/wIAAgAAAAAAAAD+/wMAAwAAAAAAAAD9/wQABgAAAAAAAAD8/wQABgAAAAAAAAD7/wQAAwAAAAAAAAD6/wQAAQAAAAAAAAD4/wQAAgAAAAAAAAD4/wMABAAAAAAAAAD+/wQAAgAAAAAAAAD+/wEABAAAAAAAAAD+/wAAAQAAAAAAAAD//wAAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAAEABgAAAAAAAAAAAAIAAwAAAAAAAAAAAAMABgAAAAAAAAD//wMAAQAAAAAAAAAAAAQABAAAAAAAAAD//wQAAQAAAAAAAAD//wIAAQAAAAAAAAD//wEABQAAAAAAAAABAAQABgAAAAAAAAABAAEABAAAAAAAAAACAAEABQAAAAAAAAADAAEABQAAAAAAAAADAAAABQAAAAAAAAAEAAAAAwAAAAAAAAAEAAEAAgAAAAAAAAADAAIAAQAAAAAAAAADAAMABAAAAAAAAAADAAQAAQAAAAAAAAACAAQAAwAAAAAAAAABAAAAAgAAAAAAAAACAAAABQAAAAAAAAACAAMABgAAAAAAAAACAAIABQAAAAAAAAACAP//BgAAAAAAAAACAP7/AwAAAAAAAAADAP7/BAAAAAAAAAADAP//BgAAAAAAAAABAP//AQAAAAAAAAAEAP7/AgAAAAAAAAAEAP//AgAAAAAAAAABAP7/AgAAAAAAAAABAAIAAgAAAAAAAAABAAMAAQAAAAAAAAAAAP//AgAAAAAAAAD/////AgAAAAAAAAD///7/BgAAAAAAAAD+//7/BQAAAAAAAAAAAP7/AwAAAAAAAAD+////BQAAAAAAAAD9//7/BgAAAAAAAAD8//7/AQAAAAAAAAD8//3/AgAAAAAAAAD9//3/AwAAAAAAAAD9////BgAAAAAAAAD6//7/AQAAAAAAAAD6//3/AgAAAAAAAAD7//3/AQAAAAAAAAD7//7/AwAAAAAAAAD5//7/BgAAAAAAAAD+//3/AQAAAAAAAAD///3/BgAAAAAAAAAAAP3/AwAAAAAAAAABAP3/BgAAAAAAAAACAP3/BAAAAAAAAAADAP3/AgAAAAAAAAAEAP3/AwAAAAAAAAAEAAIABgAAAAAAAAAEAAMABgAAAAAAAAAEAAQABgAAAAAAAAD4/wIAAQAAAAAAAAD4/wEABAAAAAAAAAD4/wAAAwAAAAAAAAD4////AwAAAAAAAAD4//7/BQAAAAAAAAD5//3/AgAAAAAAAAD4//3/BAAAAAAAAAA=")
+tile_set = SubResource("TileSet_kx78r")
+
+[node name="Paredes" type="TileMapLayer" parent="." unique_id=1156992372]
+
+[node name="Objetos" type="TileMapLayer" parent="." unique_id=1965787664]
+tile_map_data = PackedByteArray("AAD9/wAAAgAAAAAAAAD9/wEAAwAAAAAAAAAAAAAAAgAAAAAAAAAAAAEAAwAAAAAAAAA=")
+tile_set = SubResource("TileSet_j5dva")
+
+[node name="Jogador" parent="." unique_id=1608639586 instance=ExtResource("2_j5dva")]
+position = Vector2(0, 0)
