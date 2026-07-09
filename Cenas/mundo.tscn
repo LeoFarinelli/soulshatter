@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7kfvkno2pswo" path="res://Arte/Tiles/woodfloortile1d.png" id="4_c6pvx"]
 [ext_resource type="Texture2D" uid="uid://btnuugqcva1v1" path="res://Arte/Tiles/woodfloortile1e.png" id="5_nt6ue"]
 [ext_resource type="Texture2D" uid="uid://crm12yje4e8kh" path="res://Arte/Tiles/woodfloortile1f.png" id="6_ktpro"]
+[ext_resource type="PackedScene" uid="uid://cey3l2obddt0n" path="res://Inimigos/Teste/javali.tscn" id="10_bjsl6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j20r2"]
 texture = ExtResource("1_j4kvc")
@@ -69,3 +70,7 @@ tile_set = SubResource("TileSet_j5dva")
 
 [node name="Jogador" parent="." unique_id=1608639586 instance=ExtResource("2_j5dva")]
 position = Vector2(0, 0)
+
+[node name="Javali" parent="." unique_id=740861702 instance=ExtResource("10_bjsl6")]
+position = Vector2(-94, 37)
+scale = Vector2(0.3, 0.3)

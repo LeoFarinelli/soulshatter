@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://cey3l2obddt0n"]
+
+[ext_resource type="Texture2D" uid="uid://cph778n04adie" path="res://Inimigos/Teste/BOAR FREE.png" id="1_30o7e"]
+[ext_resource type="Script" uid="uid://ce7n8sv3hccph" path="res://Inimigos/Teste/javali.gd" id="1_mtnx1"]
+[ext_resource type="Script" uid="uid://co2hwg5k7tbks" path="res://Scripts/health.gd" id="2_health"]
+[ext_resource type="Script" uid="uid://du7kpt6bowadm" path="res://Scripts/hurtbox.gd" id="3_hurtbox"]
+[ext_resource type="Script" uid="uid://dlmgtt3a4ikbs" path="res://Scripts/health_bar.gd" id="4_healthbar"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+radius = 19.31
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bc528"]
+size = Vector2(54, 68)
+
+[sub_resource type="Animation" id="Animation_mtnx1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_3x6jk"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 5, 7]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pq5cg"]
+_data = {
+&"RESET": SubResource("Animation_mtnx1"),
+&"idle": SubResource("Animation_3x6jk")
+}
+
+[node name="Javali" type="CharacterBody2D" unique_id=740861702]
+script = ExtResource("1_mtnx1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1420198830]
+position = Vector2(3, -39)
+texture = ExtResource("1_30o7e")
+hframes = 9
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2037888140]
+position = Vector2(2, -14)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Health" type="Node" parent="." unique_id=-2061521730]
+script = ExtResource("2_health")
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=-2061521729]
+position = Vector2(6, -12)
+script = ExtResource("3_hurtbox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=-2061521728]
+position = Vector2(-4, -24)
+shape = SubResource("RectangleShape2D_bc528")
+debug_color = Color(0.6468782, 0.52103215, 0.06693611, 0.41960785)
+
+[node name="HealthBar" type="Node2D" parent="." unique_id=-2061521727]
+position = Vector2(0, -56)
+script = ExtResource("4_healthbar")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=81089786]
+libraries/ = SubResource("AnimationLibrary_pq5cg")
+autoplay = &"idle"
