@@ -15,6 +15,10 @@ run/main_scene="uid://c3ryxnbssrtpu"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+BattleTransition="*uid://c2tgxen404ojh"
+
 [display]
 
 window/size/viewport_width=640

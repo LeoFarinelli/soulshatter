@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bg1c66i17vjur"]
+
+[ext_resource type="Texture2D" uid="uid://bwyfcfm200hsm" path="res://Arte/dlassets/Oasis.png" id="1_r7ct6"]
+[ext_resource type="Script" uid="uid://dlo01hhfev512" path="res://Scripts/battle_manager.gd" id="2_3qsk5"]
+
+[node name="Battle" type="Node2D" unique_id=902527014]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=48611216]
+position = Vector2(510, 653.00006)
+scale = Vector2(1.1242918, 1.7768317)
+texture = ExtResource("1_r7ct6")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=713136370]
+
+[node name="PlayerMarker" type="Marker2D" parent="." unique_id=1485210817]
+position = Vector2(79, 277)
+
+[node name="EnemyMarker" type="Marker2D" parent="." unique_id=1480704413]
+position = Vector2(538, 131)
+
+[node name="BattleManager" type="Node" parent="." unique_id=1134867557]
+script = ExtResource("2_3qsk5")

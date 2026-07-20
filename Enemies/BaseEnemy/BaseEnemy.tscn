@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://r6ua8g2uiyx2"]
+
+[ext_resource type="Script" uid="uid://cbr8xqmsfacyp" path="res://Enemies/BaseEnemy/base_enemy.gd" id="1_mkdrb"]
+[ext_resource type="Texture2D" uid="uid://b6dfk0ls53u6o" path="res://Arte/dlassets/DragonMZAvery.png" id="1_oo24i"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
+
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=321856908]
+script = ExtResource("1_mkdrb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=198624544]
+position = Vector2(-1, -47)
+texture = ExtResource("1_oo24i")
+hframes = 3
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1498057798]
+position = Vector2(2, -13)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="BattleTrigger" type="Area2D" parent="." unique_id=1968147202]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BattleTrigger" unique_id=2144529188]
+position = Vector2(2, -13)
+scale = Vector2(3, 3)
+shape = SubResource("CircleShape2D_g4v7s")

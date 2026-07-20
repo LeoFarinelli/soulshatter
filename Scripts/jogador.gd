@@ -1,39 +1,43 @@
 extends CharacterBody2D
 
-@export var velocidade := 50.0
-@export var aceleracao := 800.0
-@export var desaceleracao := 800.0
-@export var sprite_facing_right := true # ajustar se o sprite padrão olhar para a esquerda
+const VELOCIDADE = 50.0
 
 @onready var sprite = $Sprite2D
 
-func _physics_process(delta):
-	# Lê o input como vetor (esquerda, direita, cima, baixo)
-	var entrada = Input.get_vector("mover_esquerda", "mover_direita", "mover_cima", "mover_baixo")
+func _ready() -> void:
+	add_to_group("player")
 
-	var alvo = entrada * velocidade
-
-	# Suaviza a velocidade (acelera/desacelera)
-	if entrada.length() > 0:
-		velocity = velocity.move_toward(alvo, aceleracao * delta)
-	else:
-		velocity = velocity.move_toward(Vector2.ZERO, desaceleracao * delta)
-
-	# Animação e espelhamento
-	if entrada.length() > 0.01:
-		# Prioriza animação horizontal quando o componente X for maior
-		if abs(entrada.x) > abs(entrada.y):
+func _physics_process(_delta):
+	var direcao = Vector2.ZERO
+	
+	if Input.is_action_pressed("mover_direita"):
+		direcao.x = 1
+	elif Input.is_action_pressed("mover_esquerda"):
+		direcao.x = -1
+	elif Input.is_action_pressed("mover_baixo"):
+		direcao.y = 1
+	elif Input.is_action_pressed("mover_cima"):
+		direcao.y = -1
+		
+	if direcao != Vector2.ZERO:
+		velocity = direcao * VELOCIDADE
+		
+		# Verifica a direção horizontal (Esquerda / Direita)
+		if direcao.x != 0:
 			sprite.play("andar_lado")
-			# Se o sprite aponta para a direita por padrão, inverta quando x < 0
-			sprite.flip_h = (entrada.x > 0) if sprite_facing_right else (entrada.x < 0)
-		elif entrada.y > 0:
+			# O truque do espelho: se a direção for menor que 0 (esquerda), ele inverte a imagem!
+			sprite.flip_h = direcao.x > 0
+			
+		# Verifica a direção vertical (Cima / Baixo)
+		elif direcao.y > 0:
 			sprite.play("andar_baixo")
-			sprite.flip_h = false
-		elif entrada.y < 0:
+			sprite.flip_h = false # Garante que a imagem não fique invertida sem querer
+		elif direcao.y < 0:
 			sprite.play("andar_cima")
 			sprite.flip_h = false
+			
 	else:
-		# Parado
+		velocity = Vector2.ZERO
 		sprite.stop()
 		sprite.frame = 0
 
