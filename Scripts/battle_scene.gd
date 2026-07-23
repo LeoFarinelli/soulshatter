@@ -1,30 +1,27 @@
-extends Node
+extends Node2D
 
-var battle_triggered := false
-# Called when the node enters the scene tree for the first time.
-# BattleScene.gd
+@onready var battle_manager: BattleManager = $BattleManager
+
+
 func _ready() -> void:
-	if BattleTransition.pending_enemy_scene:
-		setup_battle(
+    if BattleTransition.pending_enemy_scene:
+        battle_manager.setup_battle(
             BattleTransition.pending_enemy_scene,
             BattleTransition.pending_background
         )
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func end_battle(player_won: bool) -> void:
-	if player_won:
-		get_tree().change_scene_to_file(BattleTransition.return_scene_path)
-        # aqui você pode remover o inimigo derrotado do overworld,
-        # via um id salvo em algum GameState autoload
-	else:
-		get_tree().change_scene_to_file("res://scenes/GameOverScene.tscn")
+    if BattleTransition.overlay:
+        await BattleTransition.overlay.fade_out()
 
-func _on_area_2d_body_entered(body: Node) -> void:
-	if battle_triggered:
-		return
-	if body.is_in_group("player"):
-		battle_triggered = true
-		start_battle()
+    var next_scene_path := BattleTransition.return_scene_path
+    if not player_won and ResourceLoader.exists("res://scenes/GameOverScene.tscn"):
+        next_scene_path = "res://scenes/GameOverScene.tscn"
+
+    if next_scene_path != "":
+        get_tree().change_scene_to_file(next_scene_path)
+        await get_tree().process_frame
+
+    if BattleTransition.overlay:
+        await BattleTransition.overlay.fade_in()

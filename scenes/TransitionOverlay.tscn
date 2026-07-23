@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cywfvd6fx158j"]
+
+[ext_resource type="Script" uid="uid://xjp6rt7vbtau" path="res://Scripts/transition_overlay.gd" id="1_lakim"]
+
+[node name="TransitionOverlay" type="CanvasLayer" unique_id=165968069]
+script = ExtResource("1_lakim")
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1752389156]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
